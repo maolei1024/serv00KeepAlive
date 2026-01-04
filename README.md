@@ -1,18 +1,18 @@
 # Serv00 KeepAlive
 
 [![Docker Build](https://github.com/maolei1024/serv00KeepAlive/actions/workflows/docker-build.yml/badge.svg)](https://github.com/maolei1024/serv00KeepAlive/actions/workflows/docker-build.yml)
-[![Docker Pulls](https://img.shields.io/docker/pulls/maolei1024/serv00-keepalive)](https://hub.docker.com/r/maolei1024/serv00-keepalive)
+[![Docker Pulls](https://img.shields.io/docker/pulls/xuni2048/serv00-keepalive)](https://hub.docker.com/r/xuni2048/serv00-keepalive)
 
 自动登录 serv00 面板的保活工具，防止账号因 90 天不登录而被封禁。
 
-## ✨ 功能特点
+## 功能特点
 
--  **HTTP 请求登录** - 轻量级，无需浏览器，资源消耗小
--  **账号状态检测** - 自动识别正常、封禁、登录失败等状态
--  **多账号支持** - 配置文件管理多个 serv00 账号
--  **封禁回调** - 账号被封时执行自定义 Shell 命令（发通知等）
+- **HTTP 请求登录** - 轻量级，无需浏览器，资源消耗小
+- **账号状态检测** - 自动识别正常、封禁、登录失败等状态
+- **多账号支持** - 配置文件管理多个 serv00 账号
+- **封禁回调** - 账号被封时执行自定义 Shell 命令（发通知等）
 
-## 📦 安装
+## 安装
 
 ### 方式 1：直接运行
 
@@ -33,7 +33,7 @@ cp config.example.yaml config.yaml
 
 ```bash
 # 从 Docker Hub 拉取
-docker pull maolei1024/serv00-keepalive:latest
+docker pull xuni2048/serv00-keepalive:latest
 ```
 
 ## 配置
@@ -64,7 +64,7 @@ settings:
   log_file: "serv00.log"
 ```
 
-##  运行
+## 运行
 
 ### 直接运行
 
@@ -90,13 +90,13 @@ usage: main.py [-h] [-c CONFIG] [--no-log] [-v]
 # 一次性运行
 docker run --rm \
   -v $(pwd)/config.yaml:/app/config/config.yaml:ro \
-  maolei1024/serv00-keepalive:latest
+  xuni2048/serv00-keepalive:latest
 
 # 使用 docker-compose
 docker-compose up
 ```
 
-##  定时运行
+## 定时运行
 
 ### Cron（直接运行）
 
@@ -109,9 +109,8 @@ docker-compose up
 
 ```bash
 # 每周一早上 8 点执行
-0 8 * * 1 docker run --rm -v /path/to/config.yaml:/app/config/config.yaml:ro maolei1024/serv00-keepalive
+0 8 * * 1 docker run --rm -v /path/to/config.yaml:/app/config/config.yaml:ro xuni2048/serv00-keepalive
 ```
-
 
 ### 自行构建
 
@@ -123,6 +122,6 @@ docker build -t serv00-keepalive .
 docker run --rm -v $(pwd)/config.yaml:/app/config/config.yaml:ro serv00-keepalive
 ```
 
-## 📄 License
+## License
 
 MIT

@@ -11,7 +11,13 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # 复制依赖文件
 COPY requirements.txt .
 
-# 安装依赖
+# 安装系统工具（curl 用于 webhook 通知等）
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安装 Python 依赖
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 复制项目文件

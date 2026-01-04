@@ -1,0 +1,12 @@
+services:
+  serv00-keepalive:
+    build: .
+    container_name: serv00-keepalive
+    volumes:
+      # 挂载配置文件
+      - ./config.yaml:/app/config/config.yaml:ro
+      # 挂载日志目录（可选）
+      - ./logs:/app/logs
+    restart: "no"
+    # 可选：使用 cron 定时运行时取消下面注释
+    # 或者使用外部调度器如 cron/systemd timer 来启动容器

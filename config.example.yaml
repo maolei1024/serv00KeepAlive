@@ -1,0 +1,23 @@
+# Serv00 KeepAlive 配置示例
+# 复制此文件为 config.yaml 并填入你的账号信息
+# cp config.example.yaml config.yaml
+
+accounts:
+  # 账号 1
+  - panel_url: "https://panel12.serv00.com"
+    username: "your_username"
+    password: "your_password"
+    on_banned: null  # 可选：封禁时执行的 shell 命令，如发送通知
+
+  # 账号 2（可添加多个）
+  - panel_url: "https://panel10.serv00.com"
+    username: "another_user"
+    password: "another_password"
+    # 封禁时发送 webhook 通知示例
+    on_banned: "curl -X POST -H 'Content-Type: application/json' -d '{\"text\":\"Account banned!\"}' https://your-webhook-url"
+
+# 全局设置
+settings:
+  timeout: 30           # HTTP 请求超时（秒）
+  retry_count: 3        # 失败重试次数
+  log_file: "serv00.log"  # 日志文件路径，设为 null 禁用文件日志

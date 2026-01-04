@@ -31,4 +31,7 @@ ENV CONFIG_PATH=/app/config/config.yaml
 ENV LOG_PATH=/app/logs/serv00.log
 
 # 运行脚本
-CMD ["python3", "main.py", "-c", "/app/config/config.yaml"]
+# ENTRYPOINT 固定执行 python3 main.py
+# CMD 提供默认参数，可被 K8s args 覆盖
+ENTRYPOINT ["python3", "main.py"]
+CMD ["-c", "/app/config/config.yaml"]
